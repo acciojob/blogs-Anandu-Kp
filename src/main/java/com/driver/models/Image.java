@@ -27,6 +27,11 @@ public class Image {
 
     }
 
+    public Image(String description, String dimensions) {
+        this.description = description;
+        this.dimensions = dimensions;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
