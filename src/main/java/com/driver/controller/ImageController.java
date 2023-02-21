@@ -1,6 +1,5 @@
 package com.driver.controller;
 
-import com.driver.models.Blog;
 import com.driver.models.Image;
 import com.driver.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +24,11 @@ public class ImageController {
     public ResponseEntity<Integer> countImagesInScreen(@PathVariable int id, @PathVariable String screenDimensions){
         int count=imageService.countImagesInScreen(id,screenDimensions);
         return new ResponseEntity<>(count, HttpStatus.OK);
+    }
+    @GetMapping("/getImage/{id}")
+    public ResponseEntity<Image> countImagesInScreen(@PathVariable int id){
+        Image image=imageService.getImage(id);
+        return new ResponseEntity<>(image, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

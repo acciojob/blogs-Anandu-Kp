@@ -19,9 +19,9 @@ public class ImageService {
 
     public Image addImage(Integer blogId, String description, String dimensions){
         //add an image to the blog
-        Image image=new Image(description,dimensions);
-//        image.setDescription(description);
-//        image.setDimensions(dimensions);
+        Image image=new Image();
+        image.setDescription(description);
+        image.setDimensions(dimensions);
         Blog blog=blogRepository2.findById(blogId).get();
         image.setBlog(blog);
 
@@ -43,9 +43,16 @@ public class ImageService {
 
         Image image=imageRepository2.findById(id).get();
         String dimensions=image.getDimensions();
-        int dimension=Character.getNumericValue(dimensions.charAt(0))*Character.getNumericValue(dimensions.charAt(2));
-        int givenDimension=Character.getNumericValue(screenDimensions.charAt(0))*Character.getNumericValue(screenDimensions.charAt(2));
+        int dimensionx=Character.getNumericValue(dimensions.charAt(0));
+        int dimensiony=Character.getNumericValue(dimensions.charAt(2));
+        int givenDimensionx=Character.getNumericValue(screenDimensions.charAt(0));
+        int givenDimensiony=Character.getNumericValue(screenDimensions.charAt(2));
+        int x=givenDimensiony/dimensionx;
+        int y=givenDimensiony/dimensiony;
+        return Math.min(x,y);
+    }
 
-        return givenDimension/dimension;
+    public Image getImage(int id) {
+        return imageRepository2.findById(id).get();
     }
 }
