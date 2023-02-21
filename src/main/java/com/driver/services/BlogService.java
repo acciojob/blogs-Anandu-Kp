@@ -32,9 +32,10 @@ public class BlogService {
         blog.setTitle(title);
         User user= userRepository1.findById(userId).get();
         blog.setUser(user);
+        user.getBlogList().add(blog);
         List<Image> imageList=new ArrayList<>();
         blog.setImageList(imageList);
-        blogRepository1.save(blog);
+        userRepository1.save(user);
         return blog;
 
     }
