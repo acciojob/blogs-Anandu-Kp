@@ -43,11 +43,11 @@ public class ImageService {
 
         Image image=imageRepository2.findById(id).get();
         String dimensions=image.getDimensions();
-        int dimensionx=Character.getNumericValue(dimensions.charAt(0));
+        int dimensionx= Character.getNumericValue(dimensions.charAt(0));
         int dimensiony=Character.getNumericValue(dimensions.charAt(2));
         int givenDimensionx=Character.getNumericValue(screenDimensions.charAt(0));
-        int givenDimensiony=Character.getNumericValue(screenDimensions.charAt(2));
-        int x=givenDimensiony/dimensionx;
+        int givenDimensiony=Character.getNumericValue(screenDimensions.charAt(0));
+        int x=givenDimensionx/dimensionx;
         int y=givenDimensiony/dimensiony;
         return Math.min(x,y);
     }
